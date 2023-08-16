@@ -1,7 +1,7 @@
 ﻿using App.Core.Application.DTOs.Product.Validators;
 using App.Core.Application.DTOs.Product;
 using App.Core.Application.Features.Products.Requests.Commands;
-using App.Core.Application.Persistence.Contracts;
+using App.Core.Application.Contracts.Persistence;
 using App.Core.Domain.Entities;
 using AutoMapper;
 using MediatR;
@@ -39,8 +39,8 @@ namespace App.Core.Application.Features.Products.Handlers.Commands
 
 
             var product = _mapper.Map<Product>(request.ProductDto);
-            var id = await _productRepository.Add(product);
-            return id;
+            product = await _productRepository.Add(product);
+            return product.Id;
         }
     }
 }

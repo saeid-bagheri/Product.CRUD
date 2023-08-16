@@ -1,7 +1,7 @@
 ﻿using App.Core.Application.DTOs.Product.Validators;
 using App.Core.Application.Exceptions;
 using App.Core.Application.Features.Products.Requests.Commands;
-using App.Core.Application.Persistence.Contracts;
+using App.Core.Application.Contracts.Persistence;
 using AutoMapper;
 using FluentValidation.Results;
 using MediatR;

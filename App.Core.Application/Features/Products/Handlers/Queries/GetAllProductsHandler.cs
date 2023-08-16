@@ -1,7 +1,7 @@
 ﻿using App.Core.Application.DTOs;
 using App.Core.Application.DTOs.Product;
 using App.Core.Application.Features.Products.Requests.Queries;
-using App.Core.Application.Persistence.Contracts;
+using App.Core.Application.Contracts.Persistence;
 using AutoMapper;
 using MediatR;
 using System;

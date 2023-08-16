@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Core.Application.Persistence.Contracts
+namespace App.Core.Application.Contracts.Persistence
 {
     public interface IGenericRepository<T> where T : class
     {
         Task<T> Get(int id);
         Task<List<T>> GetAll();
-        Task<int> Add(T entity);
+        Task<T> Add(T entity);
         Task Update(T entity);
-        Task Delete(int id);
+        Task Delete(T entity);
     }
 }

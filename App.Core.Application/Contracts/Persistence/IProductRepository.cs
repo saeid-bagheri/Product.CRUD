@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Core.Application.Persistence.Contracts
+namespace App.Core.Application.Contracts.Persistence
 {
     public interface IProductRepository : IGenericRepository<Product>
     {

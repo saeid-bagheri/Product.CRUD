@@ -1,5 +1,5 @@
 ﻿using App.Core.Application.Features.Products.Requests.Commands;
-using App.Core.Application.Persistence.Contracts;
+using App.Core.Application.Contracts.Persistence;
 using AutoMapper;
 using MediatR;
 using System;
@@ -22,7 +22,8 @@ namespace App.Core.Application.Features.Products.Handlers.Commands
         }
         public async Task Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
-            await _productRepository.Delete(request.Id);
+            var product = await _productRepository.Get(request.Id);
+            await _productRepository.Delete(product);
         }
     }
 }
