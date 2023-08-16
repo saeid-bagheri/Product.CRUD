@@ -1,4 +1,5 @@
 ﻿using App.Core.Application.Profiles;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,12 @@ namespace App.Core.Application._IocConfigs
 {
     public static class ApplicationServicesRegistration
     {
-        public static void ConfigureApplicationServices(this IServiceCollection services)
+        public static IServiceCollection ConfigureApplicationServices(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddMediatR(Assembly.GetExecutingAssembly());
+
+            return services;
         }
     }
 }

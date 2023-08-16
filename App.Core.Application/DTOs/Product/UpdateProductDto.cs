@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Core.Application.DTOs
+namespace App.Core.Application.DTOs.Product
 {
-    public class ProductDto
+    public class UpdateProductDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
