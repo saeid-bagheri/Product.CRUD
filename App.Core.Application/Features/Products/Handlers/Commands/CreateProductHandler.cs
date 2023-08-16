@@ -1,4 +1,6 @@
-﻿using App.Core.Application.Features.Products.Requests.Commands;
+﻿using App.Core.Application.DTOs.Product.Validators;
+using App.Core.Application.DTOs.Product;
+using App.Core.Application.Features.Products.Requests.Commands;
 using App.Core.Application.Persistence.Contracts;
 using App.Core.Domain.Entities;
 using AutoMapper;
@@ -8,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FluentValidation.Results;
+using App.Core.Application.Exceptions;
 
 namespace App.Core.Application.Features.Products.Handlers.Commands
 {
@@ -23,6 +27,17 @@ namespace App.Core.Application.Features.Products.Handlers.Commands
         }
         public async Task<int> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
+            var validator = new ProductDtoValidator();
+            ValidationResult validationResult = validator.Validate(request.ProductDto);
+
+
+            if (!validationResult.IsValid)
+            {
+                // Handle validation errors
+                throw new ValidationException(validationResult);
+            }
+
+
             var product = _mapper.Map<Product>(request.ProductDto);
             var id = await _productRepository.Add(product);
             return id;
