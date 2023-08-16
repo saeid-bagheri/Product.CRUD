@@ -20,10 +20,11 @@ namespace App.Core.Application.Features.Products.Handlers.Commands
             _productRepository = productRepository;
             _mapper = mapper;
         }
-        public async Task Handle(DeleteProductCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
             var product = await _productRepository.Get(request.Id);
             await _productRepository.Delete(product);
+            return Unit.Value;
         }
     }
 }

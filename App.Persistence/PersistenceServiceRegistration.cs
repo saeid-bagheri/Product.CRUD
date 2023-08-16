@@ -11,18 +11,17 @@ using System.Threading.Tasks;
 
 namespace App.Persistence
 {
-    public static class PersistenceServiceregistration
+    public static class PersistenceServiceRegistration
     {
         public static IServiceCollection ConfigurePersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("AppConnectionString")));
+            options.UseSqlServer(configuration.GetSection("ConnectionString").Value));
 
-            services.AddScoped(typeof(IGenericRepository<>), typeof(IGenericRepository<>));
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IProductRepository, ProductRepository>();
 
             return services;
-
         }
     }
 }
