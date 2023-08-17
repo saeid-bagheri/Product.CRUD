@@ -1,7 +1,12 @@
 using App.Core.Application._IocConfigs;
 using App.Persistence;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 // Add services to the container.
 builder.Services.ConfigureApplicationServices();
@@ -26,5 +31,10 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Create or migrate the database
+using var scope = app.Services.CreateScope();
+var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+dbContext.Database.Migrate();
 
 app.Run();

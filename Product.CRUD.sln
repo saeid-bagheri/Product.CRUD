@@ -7,19 +7,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{18CCFB4A-D0E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A39E3801-8780-4939-898A-76B0371D471B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{9C58E418-D4C5-42CA-B9F3-A37D70CF1D4D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Core", "01-Core", "{9C58E418-D4C5-42CA-B9F3-A37D70CF1D4D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{5E3DC996-57DB-401A-A2D6-F7DC4304A7A2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-Infrastructure", "02-Infrastructure", "{5E3DC996-57DB-401A-A2D6-F7DC4304A7A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Core.Domain", "App.Core.Domain\App.Core.Domain.csproj", "{03106FA4-F635-4E24-A708-E7E2E0CEFCD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Core.Domain", "App.Core.Domain\App.Core.Domain.csproj", "{03106FA4-F635-4E24-A708-E7E2E0CEFCD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Core.Application", "App.Core.Application\App.Core.Application.csproj", "{FFB031D8-99AB-409D-888A-D3BFEB074F38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Core.Application", "App.Core.Application\App.Core.Application.csproj", "{FFB031D8-99AB-409D-888A-D3BFEB074F38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Persistence", "App.Persistence\App.Persistence.csproj", "{11857F44-401D-461A-9CF1-FE88F8ABC789}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Persistence", "App.Persistence\App.Persistence.csproj", "{11857F44-401D-461A-9CF1-FE88F8ABC789}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Endpoints", "Endpoints", "{72FA8C9E-B62E-40C8-98B2-23E61CAE9457}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Endpoints", "03-Endpoints", "{72FA8C9E-B62E-40C8-98B2-23E61CAE9457}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Endpoints.API", "App.API\App.Endpoints.API.csproj", "{C5542B6B-BCC7-4435-9252-39C7ACF0EF8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Endpoints.API", "App.API\App.Endpoints.API.csproj", "{C5542B6B-BCC7-4435-9252-39C7ACF0EF8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

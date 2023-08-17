@@ -27,9 +27,20 @@ namespace App.Persistence
         {
             base.OnModelCreating(builder);
 
+            builder.Entity<Product>(entity =>
+            {
+                entity.Property(e => e.Name)
+                .HasMaxLength(50);
+
+                entity.Property(e => e.ManufacturePhone)
+                .HasMaxLength(11)
+                .IsFixedLength();
+            });
+
             builder.Entity<Product>()
                 .HasIndex(p => new { p.ManufactureEmail, p.ProductDate })
                 .IsUnique();
+
 
         }
 

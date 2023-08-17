@@ -18,6 +18,8 @@ namespace App.Persistence
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(configuration.GetSection("ConnectionString").Value));
 
+
+
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IProductRepository, ProductRepository>();
 
