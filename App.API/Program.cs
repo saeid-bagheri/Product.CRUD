@@ -1,4 +1,5 @@
 using App.Core.Application._IocConfigs;
+using App.EndPoints.API.CustomMiddleWares;
 using App.Persistence;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.ConfigureApplicationServices();
 builder.Services.ConfigurePersistenceServices(builder.Configuration);
+builder.Services.AddTransient<CustomExceptionMiddleware>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -25,6 +27,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//Execption Heandling
+app.UseMiddleware<CustomExceptionMiddleware>();
+
 
 app.UseHttpsRedirection();
 

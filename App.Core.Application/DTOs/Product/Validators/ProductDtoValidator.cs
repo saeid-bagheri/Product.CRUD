@@ -25,7 +25,7 @@ namespace App.Core.Application.DTOs.Product.Validators
 
             RuleFor(product => product.ManufactureEmail)
                 .NotEmpty().WithMessage("{PropertyName} اجباری است")
-                .EmailAddress().WithMessage("شماره تلفن نامتعبر است");
+                .EmailAddress().WithMessage("ایمیل نامتعبر است");
         }
     }
 }
