@@ -1,4 +1,6 @@
-﻿using App.Core.Application.Profiles;
+﻿using App.Core.Application.Contracts.Application;
+using App.Core.Application.Profiles;
+using App.Core.Application.Services;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -16,6 +18,8 @@ namespace App.Core.Application._IocConfigs
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddHttpContextAccessor();
+            services.AddScoped<IIsUserManufactureProduct, IsUserManufactureProduct>();
 
             return services;
         }

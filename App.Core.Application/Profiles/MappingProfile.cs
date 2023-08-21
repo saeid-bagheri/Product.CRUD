@@ -14,6 +14,7 @@ namespace App.Core.Application.Profiles
         public MappingProfile()
         {
             CreateMap<Product, ProductDto>().ReverseMap();
+            CreateMap<Product, UpdateProductDto>().ReverseMap();
         }
     }
 }

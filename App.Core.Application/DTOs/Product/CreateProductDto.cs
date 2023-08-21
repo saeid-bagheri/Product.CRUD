@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace App.Core.Application.DTOs.Product
 {
-    public class UpdateProductDto
+    public class CreateProductDto
     {
-        public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime ProductDate { get; set; }
         public string ManufacturePhone { get; set; }
-        public bool IsAvailable { get; set; }
     }
 }

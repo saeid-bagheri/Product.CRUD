@@ -10,6 +10,6 @@ namespace App.Core.Application.Features.Products.Requests.Commands
 {
     public class CreateProductCommand : IRequest<int>
     {
-        public ProductDto ProductDto { get; set; }
+        public CreateProductDto CreateProductDto { get; set; }
     }
 }
