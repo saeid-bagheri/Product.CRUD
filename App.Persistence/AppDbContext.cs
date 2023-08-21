@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace App.Persistence
 {
-    public class AppDbContext : IdentityDbContext<AppUser, IdentityRole<int>, int>
+    public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -19,7 +19,6 @@ namespace App.Persistence
         }
 
         public DbSet<Product> Products { get; set; }
-        public DbSet<AppUser> Users { get; set; }
 
 
 

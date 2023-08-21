@@ -5,9 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Core.Domain.Entities
+namespace App.Identity.Models
 {
-    public class AppUser : IdentityUser<int>
+    public class ApplicationUser : IdentityUser
     {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

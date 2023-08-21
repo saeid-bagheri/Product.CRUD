@@ -3,6 +3,7 @@ using App.Core.Application.Features.Products.Requests.Commands;
 using App.Core.Application.Features.Products.Requests.Queries;
 using Azure;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -38,6 +39,7 @@ namespace App.Endpoints.API.Controllers
 
         // POST api/<ProductController>
         [HttpPost("CreateProduct")]
+        [Authorize]
         public async Task<ActionResult> Post([FromBody] ProductDto product)
         {
             var command = new CreateProductCommand() { ProductDto = product };
