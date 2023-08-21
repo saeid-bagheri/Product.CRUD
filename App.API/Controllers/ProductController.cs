@@ -12,6 +12,7 @@ namespace App.Endpoints.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -23,6 +24,7 @@ namespace App.Endpoints.API.Controllers
 
         // GET: api/<ProductController>
         [HttpGet("AllProducts")]
+
         public async Task<ActionResult<List<ProductDto>>> Get()
         {
             var products = await _mediator.Send(new GetAllProductsRequest());

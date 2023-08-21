@@ -1,7 +1,9 @@
 ﻿using App.Core.Application.Contracts.Identity;
 using App.Core.Application.Models.Identity;
+using App.Identity.Models;
 using App.Identity.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,9 +21,15 @@ namespace App.Identity
     {
         public static IServiceCollection ConfigureIdentityServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
-            services.AddDbContext<IdentityDbContext>(options =>
+            var JwtConfig = configuration.GetSection("JwtSettings").Get<JwtSettings>();
+            services.AddSingleton(JwtConfig);
+
+            services.AddDbContext<AppIdentityDbContext>(options =>
                 options.UseSqlServer(configuration.GetSection("ConnectionString").Value));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddTransient<IAuthService, AuthService>();
             services.AddAuthentication(options =>

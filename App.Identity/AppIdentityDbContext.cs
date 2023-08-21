@@ -1,4 +1,5 @@
-﻿using App.Identity.Configurations;
+﻿using App.Core.Domain.Entities;
+using App.Identity.Configurations;
 using App.Identity.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,9 @@ namespace App.Identity
         public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options) : base(options)
         {
         }
+
+
+        public DbSet<ApplicationUser> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
