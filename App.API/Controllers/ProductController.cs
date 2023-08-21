@@ -24,7 +24,7 @@ namespace App.Endpoints.API.Controllers
 
         // GET: api/<ProductController>
         [HttpGet("AllProducts")]
-
+        [AllowAnonymous]
         public async Task<ActionResult<List<ProductDto>>> Get()
         {
             var products = await _mediator.Send(new GetAllProductsRequest());
@@ -33,6 +33,7 @@ namespace App.Endpoints.API.Controllers
 
         // GET api/<ProductController>/5
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<ProductDto>> Get(int id)
         {
             var product = await _mediator.Send(new GetProductByIdRequest() { Id = id });
@@ -41,7 +42,6 @@ namespace App.Endpoints.API.Controllers
 
         // POST api/<ProductController>
         [HttpPost("CreateProduct")]
-        [Authorize]
         public async Task<ActionResult> Post([FromBody] ProductDto product)
         {
             var command = new CreateProductCommand() { ProductDto = product };

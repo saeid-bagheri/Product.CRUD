@@ -16,7 +16,7 @@ namespace App.Persistence
         public static IServiceCollection ConfigurePersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(configuration.GetSection("ConnectionString").Value));
+            options.UseSqlServer(configuration.GetSection("ConnectionStrings:DefaultConnection").Value));
 
 
 

@@ -25,7 +25,7 @@ namespace App.Identity
             services.AddSingleton(JwtConfig);
 
             services.AddDbContext<AppIdentityDbContext>(options =>
-                options.UseSqlServer(configuration.GetSection("ConnectionString").Value));
+                options.UseSqlServer(configuration.GetSection("ConnectionStrings:IdentityDbConnection").Value));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppIdentityDbContext>()
@@ -47,7 +47,7 @@ namespace App.Identity
                         ValidateLifetime = true,
                         ClockSkew = TimeSpan.Zero,
                         ValidIssuer = configuration["JwtSettings:Issuer"],
-                        ValidAudience = configuration["JwtSettings:Issuer"],
+                        ValidAudience = configuration["JwtSettings:Audience"],
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]))
                     };
                 });

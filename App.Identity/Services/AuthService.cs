@@ -2,14 +2,11 @@
 using App.Core.Application.Models.Identity;
 using App.Identity.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace App.Identity.Services
 {
@@ -35,7 +32,7 @@ namespace App.Identity.Services
                 throw new Exception($"کاربر با ایمیل {request.Email} پیدا نشد");
             }
 
-            var result = await _signInManager.PasswordSignInAsync(request.Email, request.Password, false, false);
+            var result = await _signInManager.PasswordSignInAsync(user.UserName, request.Password, false, false);
             if (!result.Succeeded)
             {
 
@@ -56,9 +53,32 @@ namespace App.Identity.Services
 
         }
 
-        public Task<RegistrationResponse> Register(RegistrationRequest request)
+        public async Task<RegistrationResponse> Register(RegistrationRequest request)
         {
-            throw new NotImplementedException();
+            var user = new ApplicationUser()
+            {
+                UserName = request.UserName,
+                Email = request.Email,
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+            };
+
+            var result = await _userManager.CreateAsync(user, request.Password);
+            if (result.Succeeded)
+            {
+                var response = new RegistrationResponse()
+                {
+                    UserId = user.Id
+                };
+
+                return response;
+            }
+
+            else
+            {
+                throw new Exception($"اطلاعات اشتباه وارد شده اند");
+            }
+
         }
 
 

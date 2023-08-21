@@ -38,7 +38,7 @@ void AddSwaggerDoc(IServiceCollection services)
                     Type = ReferenceType.SecurityScheme,
                     Id = "Bearer"
                 },
-                Scheme = "oath2",
+                Scheme = "Bearer",
                 Name = "Bearer",
                 In = ParameterLocation.Header
             },
@@ -90,6 +90,9 @@ app.MapControllers();
 using var scope = app.Services.CreateScope();
 var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 dbContext.Database.Migrate();
+
+var dbContextIdentity = scope.ServiceProvider.GetRequiredService<AppIdentityDbContext>();
+dbContextIdentity.Database.Migrate();
 
 app.Run();
 
