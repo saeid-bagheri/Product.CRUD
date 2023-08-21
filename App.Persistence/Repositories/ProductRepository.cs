@@ -1,5 +1,6 @@
 ﻿using App.Core.Application.Contracts.Persistence;
 using App.Core.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,12 @@ namespace App.Persistence.Repositories
         public ProductRepository(AppDbContext context) : base(context)
         {
             _Context = context;
+        }
+
+        public async Task<List<Product>> GetAllByManufacturer(string manufactureEmail)
+        {
+            var products = await _Context.Products.Where(p => p.ManufactureEmail == manufactureEmail).ToListAsync();
+            return products;
         }
     }
 }

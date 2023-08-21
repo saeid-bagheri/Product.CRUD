@@ -9,6 +9,6 @@ namespace App.Core.Application.Contracts.Persistence
 {
     public interface IProductRepository : IGenericRepository<Product>
     {
-
+        Task<List<Product>> GetAllByManufacturer(string manufactureEmail);
     }
 }

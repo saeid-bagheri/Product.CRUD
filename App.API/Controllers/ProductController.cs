@@ -33,11 +33,11 @@ namespace App.Endpoints.API.Controllers
         }
 
         // GET api/<ProductController>/5
-        [HttpGet("{id}")]
+        [HttpGet("ProductsByManufacturerEmail")]
         [AllowAnonymous]
-        public async Task<ActionResult<ProductDto>> Get(int id)
+        public async Task<ActionResult<ProductDto>> Get(string manufacturerEmail)
         {
-            var product = await _mediator.Send(new GetProductByIdRequest() { Id = id });
+            var product = await _mediator.Send(new GetProductsByManufacturerRequest() { ManufactureEmail = manufacturerEmail });
             return Ok(product);
         }
 
